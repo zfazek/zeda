@@ -1,0 +1,28 @@
+<html>
+  <meta charset="UTF-8">
+  <head>
+    <title>Zedality</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <% include!("./navbar.stpl"); %>
+
+    <h1>Candidates List</h1>
+    <table>
+    <tr>
+    <th>+</th>
+    <th>Name</th>
+    <th>E-mail</th>
+    <th>Phone</th>
+    </tr>
+    <% for candidate in candidates.iter() {%>
+    <tr>
+      <td><a href="/update/<%= candidate.id %>">update</a></td>
+      <td><%= candidate.name %></td>
+      <td><%= candidate.email %></td>
+      <td><%= candidate.phone %></td>
+    </tr>
+    <% } %>
+    </table>
+  </body>
+</html>

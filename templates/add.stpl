@@ -1,0 +1,34 @@
+<html>
+  <meta charset="UTF-8">
+  <head>
+    <title>Zedality</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <% include!("./navbar.stpl"); %>
+
+    <h1>Add Candidate</h1>
+    <table>
+    <form method="POST" action="/add_c">
+      <input type="hidden" name="id">
+      <tr>
+      <td>
+      Name:<input type="text" name="name" required>
+      </td>
+      </tr>
+      <tr>
+      <td>
+      E-mail:<input type="text" name="email">
+      </td>
+      </tr>
+      <tr>
+      <td>
+      Phone:<input type="text" name="phone">
+      </td>
+      </tr>
+      <input type="submit" value="Add Candidate">
+    </form>
+    </table>
+
+  </body>
+</html>

@@ -1,0 +1,22 @@
+<html>
+  <meta charset="UTF-8">
+  <head>
+    <title>Zedality</title>
+    <link rel="stylesheet" href="/static/styles.css">
+  </head>
+  <body>
+    <% include!("./navbar.stpl"); %>
+
+    <h1>Update Candidate</h1>
+    <table>
+    <form method="POST" action="/update_c">
+      <input type="hidden" name="id" value="<%= c.id %>">
+      <tr><td>Name:<input type="text" name="name" value="<%= c.name %>" required></td></tr>
+      <tr><td>E-mail:<input type="text" name="email" value="<%= c.email %>"></td></tr>
+      <tr><td>Phone:<input type="text" name="phone" value="<%= c.phone %>"></td></tr>
+      <input type="submit" value="Update Candidate">
+    </form>
+    </table>
+
+  </body>
+</html>
