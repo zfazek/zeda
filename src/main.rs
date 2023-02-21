@@ -43,17 +43,6 @@ async fn get_candidates() -> impl Responder {
     HttpResponse::Ok().body(List { candidates }.render_once().unwrap())
 }
 
-async fn delete_candidate(id: web::Path<usize>) -> impl Responder {
-    let conn = Connection::open(DB_PATH).unwrap();
-    match conn.execute("DELETE FROM candidate WHERE id = (?1)", &[&id.to_owned()]) {
-        Ok(updated) => println!("{} rows were deleted", updated),
-        Err(err) => println!("{} error occured", err),
-    }
-    HttpResponse::Found()
-        .append_header(("Location", "/"))
-        .finish()
-}
-
 #[actix_web::main]
 async fn main() {
     let conn = Connection::open(DB_PATH).unwrap();
@@ -77,7 +66,6 @@ async fn main() {
             .route("/add_c", web::post().to(add_to_candidates))
             .service(web::resource("/update/{id}").route(web::get().to(update)))
             .route("/update_c", web::post().to(update_candidate))
-            .service(web::resource("/delete/{id}").route(web::get().to(delete_candidate)))
             .service(Files::new("/static", "./static"))
     })
     .bind(addr)
