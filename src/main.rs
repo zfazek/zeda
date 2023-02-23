@@ -40,6 +40,7 @@ async fn get_candidates() -> impl Responder {
         };
         candidates.push(c);
     }
+    println!("Home Page was loaded");
     HttpResponse::Ok().body(List { candidates }.render_once().unwrap())
 }
 
